@@ -3,9 +3,9 @@ from ..connectors.falcon_connection import FalconLLMConnection
 class LLMHandler:
     """Handler class to interact with the LLM model."""
     
-    def __init__(self):
+    def __init__(self, model=None):
         """Initialize the handler with Falcon model connection."""
-        self.model_connection = FalconLLMConnection()
+        self.model_connection = model or FalconLLMConnection()
 
     def get_response(self, query: str) -> dict:
         """Method to query the model and get the response."""
