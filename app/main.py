@@ -1,18 +1,13 @@
-import os
-from dotenv import load_dotenv
-import requests
+from llm.llm_handler import LLMHandler
 
-load_dotenv()
+def main():
+    query_handler = LLMHandler()
 
-HF_API_TOKEN = os.getenv("HF_API_TOKEN")
+    query = "Explain the concept of artificial intelligence in simple terms."
 
-API_URL = "https://api-inference.huggingface.co/models/tiiuae/falcon-7b-instruct"
-headers = {"Authorization": f"Bearer {HF_API_TOKEN}"}
+    response = query_handler.get_response(query)
 
-def query(payload):
-    response = requests.post(API_URL, headers=headers, json=payload)
-    return response.json()
+    print(response)
 
-data = {"inputs": "Explain the concept of artificial intelligence in simple terms."}
-output = query(data)
-print(output)
+if __name__ == "__main__":
+    main()
