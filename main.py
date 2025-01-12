@@ -1,4 +1,4 @@
-from llm.llm_handler import LLMHandler
+from app.llm.handlers.llm_handler import LLMHandler
 
 def main():
     query_handler = LLMHandler()

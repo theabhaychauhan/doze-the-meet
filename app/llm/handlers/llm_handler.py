@@ -1,4 +1,4 @@
-from llm.falcon_connection import FalconLLMConnection
+from ..connectors.falcon_connection import FalconLLMConnection
 
 class LLMHandler:
     """Handler class to interact with the LLM model."""
