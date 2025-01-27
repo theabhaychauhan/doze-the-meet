@@ -40,16 +40,9 @@ class DeepSeekConnection:
             ],
             "stream": False
         }
-        try:
-            response = requests.post(self.api_url, headers=self.headers, json=data)
-            response.raise_for_status()
-            return response.json()
-        except requests.exceptions.HTTPError as http_err:
-            return {"error": f"HTTP error occurred: {str(http_err)}"}
-        except requests.exceptions.ConnectionError as conn_err:
-            return {"error": f"Connection error occurred: {str(conn_err)}"}
-        except requests.exceptions.RequestException as e:
-            return {"error": f"An error occurred: {str(e)}"}
+        response = requests.post(self.api_url, headers=self.headers, json=data)
+        response.raise_for_status()
+        return response.json()
 
     def get_model_name(self) -> str:
         """Return the name of the DeepSeek model."""
